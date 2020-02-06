@@ -14,7 +14,7 @@ int main()
 {
 	int year;
 	
-	cout << "Enter are year: ";
+	cout << "Enter your year: ";
 	cin >> year;
 
 	string result = get_generation(year);
