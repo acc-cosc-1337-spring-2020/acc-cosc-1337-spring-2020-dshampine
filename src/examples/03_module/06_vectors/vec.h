@@ -12,16 +12,22 @@ Write function prototype for function loop_vector_w_index with a vector of int p
 
 */
 
-
+void loop_vector_w_index(std::vector<int> nums);
 
 /*
 Write function prototype for function loop_vector_w_index with a vector of int pass by reference parameter.
 */
+void loop_vector_w_index_ref(std::vector<int> &nums);
 
 
 /*
 Write function prototype for function loop_vector_w_index with a vector of int const pass by reference parameter.
 */
+void loop_vector_w_index_const(const std::vector<int> &nums);
+
+void loop_vector_with_auto(std::vector<int> &nums);
+void loop_vector_with_auto_ref(std::vector<int> &nums);
+void loop_vector_with_auto_const(const std::vector<int> &nums);
 
 
 
