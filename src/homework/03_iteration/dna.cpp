@@ -8,17 +8,19 @@ Return quotient.
 */
 double get_gc_content(const string & dna)
 {
-	double total =0;
+	double gc_count = 0; double gc_content = 0;
+	int dna_length = dna.length(); 
 
-	for (int i = 0; i < dna.length(); ++i)
+	for (int i = 0; i < dna_length; ++i)
 	{
-		if (dna[i] == 'C' || dna[i] == 'G')
+		if (dna[i] == 'C' || dna[i] == 'c' || dna[i] == 'G' || dna[i] == 'g')
 		{
-			total += 1;
+			gc_count += 1;
 		}
 	}
+	gc_content = gc_count / dna_length;
 
-	return total / dna.length();
+	return gc_content;
 }
 
 
@@ -31,13 +33,13 @@ accepts a string parameter and returns a string reversed.
 */
 string get_reverse_string(string dna)
 {
-	string result;
+	string reverse_dna;
 
 	for (int i = dna.length()-1; i >= 0; --i)
 	{
-		result += dna[i];
+		reverse_dna += dna[i];
 	}
-	return result;
+	return reverse_dna;
 }
 
 
@@ -57,28 +59,28 @@ string get_dna_complement(string dna)
 {
 	string dna_reverse;
 	dna_reverse = get_reverse_string(dna);
-	string result;
+	string dna_complement;
 
 	for (int i = 0; i < dna_reverse.length(); ++i)
 	{
-		if (dna_reverse[i] == 'A')
+		if (dna_reverse[i] == 'A' || dna_reverse[i] == 'a')
 		{
-			result += 'T';
+			dna_complement += 'T';
 		}
-		else if (dna_reverse[i] == 'T')
+		else if (dna_reverse[i] == 'T' || dna_reverse[i] == 't')
 		{
-			result += 'A';
+			dna_complement += 'A';
 		}
-		else if (dna_reverse[i] == 'G')
+		else if (dna_reverse[i] == 'G' || dna_reverse[i] == 'g')
 		{
-			result += 'C';
+			dna_complement += 'C';
 		}
-		else if (dna_reverse[i] == 'C')
+		else if (dna_reverse[i] == 'C' || dna_reverse[i] == 'c')
 		{
-			result += 'G';
+			dna_complement += 'G';
 		}
 	}
 
-	return result;
+	return dna_complement;
 }
 

@@ -19,7 +19,9 @@ int main()
 	{
 		cout << "Press 1 to get GC-content for a DNA string.\n";
 		cout << "Press 2 to get reverse complement for DNA string.\n";
+
 		cin >> menu_prompt;
+
 		cout << "Enter DNA string: ";
 		cin >> dna_input;
 
