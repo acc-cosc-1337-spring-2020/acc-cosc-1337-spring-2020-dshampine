@@ -9,7 +9,13 @@ vector of intsparameter that returns the max value in a vector
 */
 int get_max_from_vector(const vector<int>& vec)
 {
-	return 0;
+	int max_value = 0;
+	for (auto i : vec) {
+		if (i > max_value) {
+			max_value = i;
+		}
+	}
+	return max_value;
 }
 
 

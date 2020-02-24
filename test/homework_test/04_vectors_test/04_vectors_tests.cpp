@@ -27,3 +27,13 @@ TEST_CASE("Test get primes funtion")
 	REQUIRE(vector_of_primes(50) == expected2);
 }
 
+TEST_CASE("Test max vector function")
+{
+	std::vector<int> nums1{ 3,8,1,99,1000 };
+	std::vector<int> nums2{ 15,12,11,99,88 };
+	std::vector<int> nums3{ 150,120,11,990,88888 };
+	REQUIRE(get_max_from_vector(nums1) == 1000);
+	REQUIRE(get_max_from_vector(nums2) == 99);
+	REQUIRE(get_max_from_vector(nums3) == 88888);
+}
+
