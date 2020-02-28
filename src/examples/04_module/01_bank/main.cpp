@@ -16,8 +16,19 @@ int main()
 	cout << "Balance is: " << balance;
 
 	auto amount{ 0 };
-	cout << "Enter deposit amount: ";
+	cout << "\nEnter deposit amount: ";
 	std::cin >> amount;
+
+	try
+	{
+	account.deposit(amount);
+	cout << "Balance is: " << account.get_balance();
+	}
+	catch (Invalid e)
+	{
+		cout << e.get_error() << "\n";
+	}
+	
 	
 	return 0;
 }

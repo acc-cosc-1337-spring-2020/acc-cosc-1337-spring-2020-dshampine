@@ -21,7 +21,7 @@ TEST_CASE("Test bank account deposit")
 	account.deposit(50);
 	REQUIRE(account.get_balance() == 550);
 
-	account.deposit(-50);
+	REQUIRE_THROWS_AS(account.deposit(-50), Invalid);
 	REQUIRE(account.get_balance() == 550);
 
 	
@@ -35,10 +35,10 @@ TEST_CASE("Test bank account withdrawl")
 	account.withdraw(50);
 	REQUIRE(account.get_balance() == 450);
 
-	account.deposit(-1);
+	REQUIRE_THROWS_AS(account.deposit(-1), Invalid);
 	REQUIRE(account.get_balance() == 450);
 
-	account.deposit(-451);
+	REQUIRE_THROWS_AS(account.deposit(451), Invalid);
 	REQUIRE(account.get_balance() == 450);
 
 }
