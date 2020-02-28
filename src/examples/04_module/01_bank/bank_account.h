@@ -1,5 +1,5 @@
 //bank_account.h
-#include "string";
+#include "string"
 class BankAccount
 {
 public:
