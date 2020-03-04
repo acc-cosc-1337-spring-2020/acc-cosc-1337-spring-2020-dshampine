@@ -8,8 +8,9 @@ int main()
 	auto c{ 'c' };
 	auto flag{ true }; */
 
-
-
+	//BankAccount a = 100; not explicit 
+	//BankAccount a    default consctructor
+	BankAccount a(100); //explicit constructor
 	BankAccount account(500);
 	auto balance = account.get_balance();
 	
