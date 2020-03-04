@@ -1,5 +1,6 @@
 //h
 #include "string"
+
 using std::string;
 
 class TicTacToe
@@ -7,7 +8,7 @@ class TicTacToe
 public:
 	void start_game(string first_player);
 	void mark_board(int position);
-	string get_player()const { return next_player; }
+	string get_player() { return player; }
 private:
 	void set_next_player();
 	string player;
@@ -16,8 +17,8 @@ private:
 class Error
 {
 public:
-	Error(string msg) : message{ msg } {}
-	string get_message()const { return message; }
+	Error(std::string msg) : message{ msg } {}
+	std::string get_message()const { return message; }
 private:
-	string message;
-};
+	std::string message;
+}; 

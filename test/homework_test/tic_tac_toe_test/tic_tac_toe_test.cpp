@@ -7,9 +7,47 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
+TEST_CASE("Test can't call mark board before start game")
+{
+	TicTacToe player1;
+	REQUIRE_THROWS_AS(player1.mark_board(4), Error);
+}
+
 TEST_CASE("Test start game accepts only X or O")
 {
-	TicTacToe player1("Y");
+	TicTacToe player1;
 	REQUIRE_THROWS_AS(player1.start_game("Y"), Error);
+}
+
+TEST_CASE("Test set first player to X")
+{
+	TicTacToe player1;
+	player1.start_game("X");
+	REQUIRE(player1.get_player() == "X");
+}
+
+TEST_CASE("Test set first player to O")
+{
+	TicTacToe player1;
+	player1.start_game("O");
+	REQUIRE(player1.get_player() == "O");
+}
+
+TEST_CASE("Test start game with X game flow")
+{
+	TicTacToe player1;
+	player1.start_game("X");
+	REQUIRE(player1.get_player() == "X");
+	player1.mark_board(4);
+	REQUIRE(player1.get_player() == "O");
+}
+
+TEST_CASE("Test start game with O game flow")
+{
+	TicTacToe player1;
+	player1.start_game("O");
+	REQUIRE(player1.get_player() == "O");
+	player1.mark_board(2);
+	REQUIRE(player1.get_player() == "X");
 }
 
