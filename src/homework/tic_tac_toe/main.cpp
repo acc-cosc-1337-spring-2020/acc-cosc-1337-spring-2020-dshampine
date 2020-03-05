@@ -5,21 +5,32 @@ using std::cout; using std::cin; using std::string;
 
 int main() 
 {
-	int board_position;
-	string choice;
+
 	
-	TicTacToe player_one;
-	player_one.start_game("X");
+	int board_position; string player;
+	string choice;
 
-	do 
+	try
 	{
-		cout << "Enter board position 1 - 9: ";
-		cin >> board_position;
-		player_one.mark_board(board_position);
-		cout << "\nContinue Y or N ";
-		cin >> choice;
+		cout << "To start the game make the first move as either X or O: ";
+		cin >> player;
 
-	} while (choice == "Y" || choice == "y");
+		TicTacToe game;
+		game.start_game(player);
 
+		do
+		{
+			cout << "Enter board position 1 - 9: ";
+			cin >> board_position;
+			game.mark_board(board_position);
+			cout << "\nContinue Y or N ";
+			cin >> choice;
+		} while (choice == "Y" || choice == "y");
+		}
+		catch (Error err_msg) {
+			cout << err_msg.get_message() << "\n";
+
+	}
+	
 	return 0;
 }
