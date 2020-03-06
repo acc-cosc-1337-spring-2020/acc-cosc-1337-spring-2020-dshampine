@@ -1,3 +1,4 @@
+#include <iostream>
 /*
 Create the interface for a Rectangle class with one constructor that accepts two int parameters (width, height),
 has one public function area that returns the area of the rectangle, and one private function calculate_area
@@ -12,7 +13,8 @@ class Rect
 	{
 		return area = height * length;
 	}
+	friend std::ostream& operator<<(std::ostream& out, const Rect a);
 public:
-	Rect(int h, int l) { height = h; length = l; };
+	Rect(int h, int l) { height = h; length = l; calculate_area(); }
 	int get_area();
 };

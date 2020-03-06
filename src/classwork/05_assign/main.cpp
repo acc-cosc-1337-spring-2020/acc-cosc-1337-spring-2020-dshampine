@@ -21,7 +21,8 @@ int main()
 
 	for (auto vec : area)
 		{
-		cout << vec.get_area() << "\n";
+		cout << vec;
+		//cout << vec.get_area() << "\n";
 		total += vec.get_area();
 		}
 	cout << total;
