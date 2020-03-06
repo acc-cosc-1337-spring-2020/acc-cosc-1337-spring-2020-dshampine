@@ -23,9 +23,9 @@ int main()
 			cout << "Enter board position 1 - 9: ";
 			cin >> board_position;
 			game.mark_board(board_position);
-			cout << "\nContinue Y or N ";
+			cout << "\nN for Next player or anyother key to quit. ";
 			cin >> choice;
-		} while (choice == "Y" || choice == "y");
+		} while (choice == "N" || choice == "n");
 		}
 		catch (Error err_msg) {
 			cout << err_msg.get_message() << "\n";
