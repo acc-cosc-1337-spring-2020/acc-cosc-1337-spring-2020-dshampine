@@ -10,7 +10,7 @@ class BankAccount
 public:
 	BankAccount() = default; //default constructor
 	explicit BankAccount(int b) : balance{ b } {}
-	int get_balance()const { return balance; } // const makes it so function can't be changed e.g. balance can't be changed before return
+	virtual int get_balance()const { return balance; } // const makes it so function can't be changed e.g. balance can't be changed before return
 	void deposit(int amount);
 	void withdraw(int amount);
 	void open(int amount);

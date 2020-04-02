@@ -23,6 +23,8 @@ int main()
 			cout << "Enter board position 1 - 9: ";
 			cin >> board_position;
 			game.mark_board(board_position);
+			game.display_board();
+			game.game_over();
 			cout << "\nN for Next player or anyother key to quit. ";
 			cin >> choice;
 		} while (choice == "N" || choice == "n");
