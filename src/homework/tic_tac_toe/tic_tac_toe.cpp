@@ -12,12 +12,12 @@ bool TicTacToe::game_over()
 		set_winner();
 		return true;
 	}
-	else if (check_board_full() == false)
+	else if (check_board_full() == true)
 	{
 		winner = "C";
-		return false;
+		return true;
 	}
-	
+	return false;
 }
 
 void TicTacToe::start_game(string first_player)
