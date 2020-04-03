@@ -34,3 +34,4 @@ TEST_CASE("Test menu function")
 	REQUIRE(menu(5) == "Invalid Option");
 }
 
+

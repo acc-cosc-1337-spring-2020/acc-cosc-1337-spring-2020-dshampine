@@ -17,18 +17,7 @@ bool TicTacToe::game_over()
 		winner = "C";
 		return false;
 	}
-	//{
-	//	return true;
-	//}
-	//else if (check_board_full() == false)
-	//{
-	//	return false;
-	//}
-	//else if (check_board_full() == true)
-	//{
-	//	return true;
-	//}
-	////return check_board_full();
+	
 }
 
 void TicTacToe::start_game(string first_player)

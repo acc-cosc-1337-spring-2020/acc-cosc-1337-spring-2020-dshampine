@@ -5,33 +5,65 @@ using std::cout; using std::cin; using std::string;
 
 int main() 
 {
-
-	
 	int board_position; string player;
-	string choice;
+	string choice; string play_again;
 
-	try
+	while (!(play_again == "N" || play_again == "n"))
 	{
-		cout << "To start the game make the first move as either X or O: ";
-		cin >> player;
+
+		while (!(player == "X" || player == "O"))
+		{
+			try
+			{
+				cout << "Make the first move as either X or O to start the game: ";
+				cin >> player;
+			}
+			catch (Error err_msg)
+			{
+				cout << err_msg.get_message() << "\n";
+			}
+		}
 
 		TicTacToe game;
 		game.start_game(player);
 
-		do
+		while (!(choice == "N" || choice == "n"))
 		{
-			cout << "Enter board position 1 - 9: ";
-			cin >> board_position;
-			game.mark_board(board_position);
-			game.display_board();
-			//game.game_over();
-			cout << "\nN for Next player or anyother key to quit. ";
-			cin >> choice;
-		} while (choice == "N" || choice == "n");
-		}
-		catch (Error err_msg) {
-			cout << err_msg.get_message() << "\n";
+			try
+			{
+				cout << "Enter board position 1 - 9: ";
+				cin >> board_position;
+				game.mark_board(board_position);
+				game.display_board();
+				if (game.game_over() == false)
+				{
+					cout << "Press N for next move ";
+					cin >> player;
+				}
+				else if (game.game_over() == true)
+				{
+					if (game.get_winner() == "X" || game.get_winner() == "O")
+					{
+						cout << "The winner is: " << game.get_winner();
+						break;
+					}
+					else if (game.get_winner() == "C")
+					{
+						cout << "The game is a tie!";
+						break;
+					}
+					
+				}
 
+
+			}
+			catch (Error err_msg)
+			{
+				cout << err_msg.get_message() << "\n";
+			}
+		}
+		cout << "\nPress Y to play again or N to quit: ";
+		cin >> play_again; 
 	}
 	
 	return 0;
