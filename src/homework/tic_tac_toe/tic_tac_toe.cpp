@@ -9,17 +9,26 @@ bool TicTacToe::game_over()
 {
 	if (check_column_win() == true || check_row_win() == true || check_diagonal_win() == true)
 	{
+		set_winner();
 		return true;
 	}
 	else if (check_board_full() == false)
 	{
+		winner = "C";
 		return false;
 	}
-	else if (check_board_full() == true)
-	{
-		return true;
-	}
-	//return check_board_full();
+	//{
+	//	return true;
+	//}
+	//else if (check_board_full() == false)
+	//{
+	//	return false;
+	//}
+	//else if (check_board_full() == true)
+	//{
+	//	return true;
+	//}
+	////return check_board_full();
 }
 
 void TicTacToe::start_game(string first_player)
