@@ -48,7 +48,11 @@ void TicTacToe::mark_board(int position)
 
 	pegs[position - 1] = player;
 	//check_column_win();
-	set_next_player();
+	//set_next_player();
+	if (game_over() == false)
+	{
+		set_next_player();
+	}
 }
 
 void TicTacToe::display_board() const
