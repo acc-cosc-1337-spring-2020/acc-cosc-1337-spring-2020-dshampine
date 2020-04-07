@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include "string"
 
 TEST_CASE("Verify Test Configuration", "verification") {
@@ -257,6 +258,7 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 	vector view: 2, 4, and 6
  */
 	TicTacToe board;
+	TicTacToeManager manager;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(3); //X

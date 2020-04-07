@@ -29,6 +29,8 @@ private:
 };
 #endif
 
+#ifndef ERROR_H
+#define ERROR_H
 class Error
 {
 public:
@@ -37,3 +39,4 @@ public:
 private:
 	std::string message;
 }; 
+#endif
