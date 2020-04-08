@@ -258,8 +258,9 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 	vector view: 2, 4, and 6
  */
 	TicTacToe board;
-	TicTacToeManager manager;
+	TicTacToeManager b;
 	board.start_game("X");
+	
 	REQUIRE(board.game_over() == false);
 	board.mark_board(3); //X
 	REQUIRE(board.game_over() == false);
@@ -272,6 +273,9 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 	board.mark_board(7); //X
 	//X wins
 	REQUIRE(board.game_over() == true);
+	REQUIRE(b.game_over() == true);
+	
+	
 
 }
 

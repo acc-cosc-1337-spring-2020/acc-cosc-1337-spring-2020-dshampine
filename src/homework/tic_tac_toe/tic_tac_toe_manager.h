@@ -10,7 +10,7 @@ public:
 	void save_game(const TicTacToe b);
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
 private:
-	std::vector<int> games{};
+	std::vector<TicTacToe> games;
 	int x_win{ 0 };
 	int o_win{ 0 };
 	int ties{ 0 };

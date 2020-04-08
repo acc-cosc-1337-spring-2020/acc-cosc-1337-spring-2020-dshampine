@@ -6,7 +6,7 @@
 
 void TicTacToeManager::save_game(const TicTacToe b)
 {
-	games.push_back(game_over());
+	games.push_back(b);
 	update_winner_count(get_winner());
 }
 
@@ -29,3 +29,6 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 	return out;
 	// TODO: insert return statement here
 }
+
+/*
+*/
