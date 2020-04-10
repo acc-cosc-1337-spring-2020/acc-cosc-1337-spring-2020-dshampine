@@ -1,70 +1,82 @@
-#include <iostream>
 #include "tic_tac_toe.h"
-#include "string"
-using std::cout; using std::cin; using std::string;
+#include "tic_tac_toe_manager.h"
 
-int main() 
+#include <iostream>
+
+using std::cout; using std::cin;
+
+int main()
 {
-	int board_position; string player;
-	string choice; string play_again;
+	TicTacToe game;
+	TicTacToeManager manager;
 
-	while (!(play_again == "N" || play_again == "n"))
+	string player;
+	bool while_running = true, error = true;
+	int board_position;
+	char answer = ' ';
+	   	
+	while (while_running)
 	{
-
-		while (!(player == "X" || player == "O"))
+		
+		while (error)
 		{
+			cout << "Make the first move as either X or O to start the game: ";
+			cin >> player;
 			try
 			{
-				cout << "Make the first move as either X or O to start the game: ";
-				cin >> player;
+				game.start_game(player);
+				error = false;
+				cout << "\n"; 
 			}
 			catch (Error err_msg)
 			{
-				cout << err_msg.get_message() << "\n";
+				cout << err_msg.get_message();
 			}
 		}
 
-		TicTacToe game;
-		game.start_game(player);
-
-		while (!(choice == "N" || choice == "n"))
+		try
 		{
-			try
-			{
-				cout << "Enter board position 1 - 9: ";
-				cin >> board_position;
-				game.mark_board(board_position);
-				game.display_board();
-				if (game.game_over() == false)
-				{
-					cout << "Press N for next move ";
-					cin >> player;
-				}
-				else if (game.game_over() == true)
-				{
-					if (game.get_winner() == "X" || game.get_winner() == "O")
-					{
-						cout << "The winner is: " << game.get_winner();
-						break;
-					}
-					else if (game.get_winner() == "C")
-					{
-						cout << "The game is a tie!";
-						break;
-					}
-					
-				}
-
-
-			}
-			catch (Error err_msg)
-			{
-				cout << err_msg.get_message() << "\n";
-			}
+			cin >> game;
+			cout << game;
 		}
-		cout << "\nPress Y to play again or N to quit: ";
-		cin >> play_again; 
+
+		catch (Error e)
+		{
+			cout << e.get_message();
+		}
+
+		if (game.game_over() == false)
+		{
+			cout << "\nDo you want to continue(y/n): ";
+			cin >> answer;
+			std::cout << "\n"; 
+
+			if (answer == 'n')
+			{
+				while_running = false;
+			}
+			else while_running = true;
+		}
+		else
+		{
+			manager.save_game(game);
+
+			cout << "\nPlayer " << game.get_winner() << " has won the game!";
+
+			cout << "\n\n" << manager; 
+			std::cout << "\nDo you want to play again(Y/n): ";
+			cin >> answer;
+			std::cout << "\n"; 
+
+			error = true; 
+			if (answer == 'n')
+			{
+				while_running = false;
+			}
+			else while_running = true;
+		}
 	}
-	
+
+
 	return 0;
 }

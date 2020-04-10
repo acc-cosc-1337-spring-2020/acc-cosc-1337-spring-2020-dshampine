@@ -4,11 +4,12 @@
 #ifndef TIC_TAC_TOE_MANAGER_H
 #define TIC_TAC_TOE_MANAGER_H
 
-class TicTacToeManager : public TicTacToe
+class TicTacToeManager //: public TicTacToe
 {
 public:
 	void save_game(const TicTacToe b);
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
+	//void get_winner_total(int& o, int& x, int& t) { o_win = o; x_win = x; ties = t; };
 private:
 	std::vector<TicTacToe> games;
 	int x_win{ 0 };

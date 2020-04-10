@@ -1,5 +1,5 @@
 #include "tic_tac_toe.h"
-#include "string"
+//#include "string"
 #include <iostream>
 //cpp
 
@@ -25,13 +25,13 @@ void TicTacToe::start_game(string first_player)
 	if (first_player == "X" || first_player == "O")
 	{
 		player = first_player;
-		
+		clear_board();
 	}
 	else
 	{
 		throw Error("Player must be an X or an O");
 	}
-	clear_board();
+	
 }
 
 void TicTacToe::mark_board(int position)
@@ -54,16 +54,31 @@ void TicTacToe::mark_board(int position)
 		set_next_player();
 	}
 }
-
-void TicTacToe::display_board() const
+std::ostream& operator<<(std::ostream& out, const TicTacToe& b)
 {
 	for (int i = 0; i < 9; i += 3)
-	{
-		std::cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
-	}
+		{
+			out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "\n";
+		}
+	return out;
 }
+//void TicTacToe::display_board() const
+//{
+//	for (int i = 0; i < 9; i += 3)
+//	{
+//		std::cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
+//	}
+//}
 
+std::istream& operator>>(std::istream& in, TicTacToe& b)
+{
+	int pos{ 0 };
+	std::cout << "Player " << b.get_player() << " enter a position: ";
+	in >> pos;
+	b.mark_board(pos);
 
+	return in;
+}
 
 void TicTacToe::set_next_player()
 {
@@ -157,9 +172,9 @@ void TicTacToe::set_winner()
 {
 	if (player == "X")
 	{
-		winner = "O";
+		winner = "X";
 	} 
-	else winner = "X";
+	else winner = "O";
 }
 /*
 void TicTacToe::start_game(std::string first_player)
@@ -172,4 +187,3 @@ void TicTacToe::start_game(std::string first_player)
 		throw Error("Player must be an X or O.");
 	}
 }*/
-

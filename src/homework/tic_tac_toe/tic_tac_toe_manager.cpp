@@ -1,34 +1,35 @@
 #include "tic_tac_toe_manager.h"
-#include <vector>
-#include <iostream>
-
 //cpp
 
 void TicTacToeManager::save_game(const TicTacToe b)
 {
 	games.push_back(b);
-	update_winner_count(get_winner());
+	update_winner_count(b.get_winner());
 }
 
 void TicTacToeManager::update_winner_count(string winner)
 {
 	if (winner == "X")
 	{
-		++x_win;
+		x_win++;
 	}
 	else if (winner == "O")
 	{
-		++o_win;
+		o_win++;
 	}
-	else ++ties;
+	else ties++;
 }
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
-	std::cout << "X wins: " << manager.x_win << "\nO wins: " << manager.o_win << "\nTies: " << manager.ties;
+	//int x_win{ 0 }, o_win{ 0 }, ties{ 0 };
+	std::string option{ "" };
+	for (auto game : manager.games)
+	{
+		out << game;
+	}
+	out << "X wins: " << manager.x_win << "\nO wins: " << manager.o_win << "\nTies: " << manager.ties;
 	return out;
 	// TODO: insert return statement here
 }
 
-/*
-*/

@@ -3,6 +3,7 @@
 #include <vector>
 
 using std::string;
+
 #ifndef TIC_TAC_TOE_H
 #define TIC_TAC_TOE_H
 
@@ -12,9 +13,11 @@ public:
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int position);
-	string get_player() { return player; }
-	string get_winner() { return winner; }
-	void display_board() const;
+	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& t);
+	friend std::istream& operator>>(std::istream& in, TicTacToe& b);
+	string get_player() const { return player; }
+	string get_winner() const { return winner; }
+	//void display_board() const;
 private:
 	void set_next_player();
 	bool check_board_full();
@@ -25,7 +28,7 @@ private:
 	void set_winner();
 	string player;
 	string winner;
-	std::vector<std::string> pegs { 9, " " };
+	std::vector<string> pegs { 9, " " };
 };
 #endif
 
@@ -34,7 +37,7 @@ private:
 class Error
 {
 public:
-	Error(std::string msg) : message{ msg } {}
+	Error(string msg) : message{ msg } {}
 	std::string get_message()const { return message; }
 private:
 	std::string message;
