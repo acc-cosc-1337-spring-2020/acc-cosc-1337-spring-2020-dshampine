@@ -1,7 +1,7 @@
 //h
 #include "string"
 #include <vector>
-
+#include <iostream>
 using std::string;
 
 #ifndef TIC_TAC_TOE_H
