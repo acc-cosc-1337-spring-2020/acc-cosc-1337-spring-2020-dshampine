@@ -1,5 +1,6 @@
 #include "tic_tac_toe_manager.h"
 //cpp
+#include <iostream>
 
 void TicTacToeManager::save_game(const TicTacToe b)
 {
@@ -20,7 +21,7 @@ void TicTacToeManager::update_winner_count(string winner)
 	else ties++;
 }
 
-std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
+std::ostream& operator << (std::ostream& out, const TicTacToeManager& manager)
 {
 	std::string option{ "" };
 	for (auto game : manager.games)
