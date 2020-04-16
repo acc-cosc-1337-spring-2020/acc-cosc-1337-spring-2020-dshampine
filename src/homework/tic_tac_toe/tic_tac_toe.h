@@ -10,6 +10,7 @@ using std::string;
 class TicTacToe
 {
 public:
+	TicTacToe(int s) : pegs ( s*s, " " ) {}
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int position);
@@ -18,17 +19,19 @@ public:
 	string get_player() const { return player; }
 	string get_winner() const { return winner; }
 	//void display_board() const;
+protected:
+	std::vector<string> pegs { 9, " " };
+	virtual bool check_column_win();
+	virtual bool check_row_win();
+	virtual bool check_diagonal_win();
 private:
 	void set_next_player();
 	bool check_board_full();
-	bool check_column_win();
-	bool check_row_win();
-	bool check_diagonal_win();
 	void clear_board();
 	void set_winner();
 	string player;
 	string winner;
-	std::vector<string> pegs { 9, " " };
+	
 };
 #endif
 

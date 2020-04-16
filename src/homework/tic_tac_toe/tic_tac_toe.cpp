@@ -105,7 +105,7 @@ bool TicTacToe::check_board_full()
 }
 bool TicTacToe::check_column_win()
 {
-	for (int i = 0; i < pegs.size(); ++i)
+	/*for (int i = 0; i < pegs.size(); ++i)
 	{
 		if (pegs[0] == "X" && pegs[3] == "X" && pegs[6] == "X" ||
 			pegs[1] == "X" && pegs[4] == "X" && pegs[7] == "X" ||
@@ -120,12 +120,12 @@ bool TicTacToe::check_column_win()
 			return true;
 		}
 		else return false;
-	}
-	//return false;
+	}*/
+	return false;
 }
 bool TicTacToe::check_row_win()
 {
-	for (int i = 0; i < pegs.size(); ++i)
+	/*for (int i = 0; i < pegs.size(); ++i)
 	{
 		if (pegs[0] == "X" && pegs[1] == "X" && pegs[2] == "X" ||
 			pegs[3] == "X" && pegs[4] == "X" && pegs[5] == "X" ||
@@ -140,12 +140,12 @@ bool TicTacToe::check_row_win()
 			return true;
 		}
 		else return false;
-	}
-	//return false;
+	}*/
+	return false;
 }
 bool TicTacToe::check_diagonal_win()
 {
-	for (int i = 0; i < pegs.size(); ++i)
+	/*for (int i = 0; i < pegs.size(); ++i)
 	{
 		if (pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X" ||
 			pegs[2] == "X" && pegs[4] == "X" && pegs[6] == "X")
@@ -158,8 +158,8 @@ bool TicTacToe::check_diagonal_win()
 			return true;
 		}
 		else return false;
-	}
-	//return false;
+	}*/
+	return false;
 }
 void TicTacToe::clear_board()
 {
