@@ -7,7 +7,7 @@
 class TicTacToeManager //: public TicTacToe
 {
 public:
-	void save_game(const TicTacToe b);
+	void save_game(TicTacToe b);
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
 	void get_winner_total(int& o, int& x, int& t);
 private:
