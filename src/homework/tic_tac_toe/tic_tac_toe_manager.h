@@ -1,5 +1,6 @@
 //h
-//#include <iostream>
+#include <iostream>
+#include <functional>
 #include "tic_tac_toe.h"
 #ifndef TIC_TAC_TOE_MANAGER_H
 #define TIC_TAC_TOE_MANAGER_H
