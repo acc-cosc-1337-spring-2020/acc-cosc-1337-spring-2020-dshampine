@@ -65,6 +65,7 @@ bool TicTacToe4::check_row_win()
 	}
 }
 
+
 /*
 class function check_diagonal_win
 Win diagonally
@@ -90,4 +91,6 @@ bool TicTacToe4::check_diagonal_win()
 			return true;
 		}
 		else return false;
+	}
 }
+

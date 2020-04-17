@@ -2,10 +2,17 @@
 //cpp
 //#include <iostream>
 
-void TicTacToeManager::save_game(const TicTacToe b)
+void TicTacToeManager::save_game(TicTacToe b)
 {
 	games.push_back(b);
 	update_winner_count(b.get_winner());
+}
+
+void TicTacToeManager::get_winner_total(int & o, int & x, int & t)
+{
+	std::cout << "X wins: " << x_win << "\n";
+	std::cout << "O wins: " << o_win << "\n";
+	std::cout << "Ties: " << ties << "\n";
 }
 
 void TicTacToeManager::update_winner_count(string winner)
@@ -23,13 +30,27 @@ void TicTacToeManager::update_winner_count(string winner)
 
 std::ostream& operator << (std::ostream& out, const TicTacToeManager& manager)
 {
-	std::string option{ "" };
-	for (auto game : manager.games)
+	int x_win{ 0 }; int o_win{ 0 };
+	int ties{ 0 };
+
+	for (auto &game : manager.games)
 	{
 		out << game;
+
+		if (game.get().get_winner() == "X")
+		{
+			x_win++;
+		}
+		else if (game.get().get_winner() == "O")
+		{
+			o_win++;
+
+		}
+		else
+		{
+			ties++;
+		}
 	}
-	out << "X wins: " << manager.x_win << "\nO wins: " << manager.o_win << "\nTies: " << manager.ties;
 	return out;
-	// TODO: insert return statement here
 }
 

@@ -1,6 +1,8 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 #include "string"
 
 TEST_CASE("Verify Test Configuration", "verification") {
@@ -9,33 +11,33 @@ TEST_CASE("Verify Test Configuration", "verification") {
 
 TEST_CASE("Test can't call mark board before start game")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	REQUIRE_THROWS_AS(player1.mark_board(4), Error);
 }
 
 TEST_CASE("Test start game accepts only X or O")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	REQUIRE_THROWS_AS(player1.start_game("Y"), Error);
 }
 
 TEST_CASE("Test set first player to X")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	player1.start_game("X");
 	REQUIRE(player1.get_player() == "X");
 }
 
 TEST_CASE("Test set first player to O")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	player1.start_game("O");
 	REQUIRE(player1.get_player() == "O");
 }
 
 TEST_CASE("Test start game with X game flow")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	player1.start_game("X");
 	REQUIRE(player1.get_player() == "X");
 	player1.mark_board(4);
@@ -44,7 +46,7 @@ TEST_CASE("Test start game with X game flow")
 
 TEST_CASE("Test start game with O game flow")
 {
-	TicTacToe player1;
+	TicTacToe3 player1;
 	player1.start_game("O");
 	REQUIRE(player1.get_player() == "O");
 	player1.mark_board(2);
@@ -74,7 +76,7 @@ TEST_CASE("Test win by first column", "[X wins first column]")
 	First column win are user postitions 1, 4, and 7
 	vector view: 0, 3, and 6
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1); //X
@@ -100,7 +102,7 @@ TEST_CASE("Test win by second column", "[X wins second column]")
 	Second column win are user postitions 2, 5, and 8
 	vector view: 1, 4, and 7 
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(2); //X
@@ -126,7 +128,7 @@ TEST_CASE("Test win by thrid column", "[X wins third column]")
 	Third column win are user postitions 3, 6, and 9
 	vector view: 2, 5, and 8
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(3); //X
@@ -152,7 +154,7 @@ TEST_CASE("Test win by first row", "[X wins first row]")
 	First row win are user postitions 1, 2, and 3
 	vector view: 0, 1, and 2
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1); //X
@@ -178,7 +180,7 @@ TEST_CASE("Test win by second row", "[X wins second row]")
 	Second row win are user postitions 4, 5, and 6
 	vector view: 3, 4, and 5
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(4); //X
@@ -204,7 +206,7 @@ TEST_CASE("Test win by third row", "[X wins third row]")
 	Third row win are user postitions 7, 8, and 9
 	vector view: 6, 7, and 8
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(7); //X
@@ -230,7 +232,7 @@ TEST_CASE("Test win by first diagonal", "[X wins first diagonal]")
 	First diagonal win are user postitions 1, 5, and 9
 	vector view: 0, 4, and 8
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1); //X
@@ -256,7 +258,7 @@ TEST_CASE("Test win by second diagonal", "[X wins second diagonal]")
 	Second diagonal win are user postitions 3, 5, and 7
 	vector view: 2, 4, and 6
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	
 	REQUIRE(board.game_over() == false);
@@ -282,7 +284,7 @@ TEST_CASE("Test tie win", "[No winner all spaces full]")
 	No winner
 	vector view: 1, 2, 3, 4, 5, 6, 7, 8
  */
-	TicTacToe board;
+	TicTacToe3 board;
 	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1); //X
@@ -306,4 +308,299 @@ TEST_CASE("Test tie win", "[No winner all spaces full]")
 	//Tie
 	REQUIRE(board.game_over() == true);
 
+}
+
+TEST_CASE("Test win by first column 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First column win are user postitions 1, 5, 9, and, 13
+	vector view: 0, 4, 8, and 12
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+
+TEST_CASE("Test win by second column 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	Second column win are user postitions 2, 6, 10, and, 14
+	vector view: 1, 5, 9, and 13
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+TEST_CASE("Test win by third column 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	Third column win are user postitions 3, 7, 11, and, 15
+	vector view: 2, 6, 10, and 14
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+TEST_CASE("Test win by fourth column 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First column win are user postitions 4, 8, 12, and, 16
+	vector view: 3, 7, 11, and 15
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+
+TEST_CASE("Test win by first row 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First row win are user postitions 1, 2, 3, and, 4
+	vector view: 0, 1, 2, and 3
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+
+TEST_CASE("Test win by second row 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First row win are user postitions 5, 6, 7, and, 8
+	vector view: 4, 5, 6, and 7
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(5); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(8); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+
+TEST_CASE("Test win by third row 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First row win are user postitions 9, 10, 11, and, 12
+	vector view: 8, 9, 10, and 11
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(9); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(12); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+TEST_CASE("Test win by fourth row 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First row win are user postitions 13, 14, 15, and, 16
+	vector view: 12, 13, 14, and 15
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(14); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(15); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+TEST_CASE("Test win by first diagonal 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	First diagonal win are user postitions 1, 6, 11, and, 16
+	vector view: 0, 5, 10, and 15
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(1); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(6); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(11); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(16); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
+}
+TEST_CASE("Test win by second diagonal 4x4", "[X wins first column]")
+{/*Tic Tac Toe Board
+	1 2  3  4
+	5 6  7  8
+	9 10 11 12
+	13 14 15 16
+
+	Second diagonal win are user postitions 4, 7, 10, and, 13
+	vector view: 3, 7, 9, and 12
+ */
+	TicTacToe4 board;
+	board.start_game("X");
+	REQUIRE(board.game_over() == false);
+	board.mark_board(4); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(2); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(7); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(10); //X
+	REQUIRE(board.game_over() == false);
+	board.mark_board(3); //O
+	REQUIRE(board.game_over() == false);
+	board.mark_board(13); //X
+	//X wins
+	REQUIRE(board.game_over() == true);
 }

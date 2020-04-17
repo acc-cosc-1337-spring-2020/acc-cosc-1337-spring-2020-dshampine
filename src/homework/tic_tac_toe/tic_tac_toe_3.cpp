@@ -84,12 +84,3 @@ bool TicTacToe3::check_diagonal_win()
 	}
 }
 
-std::ostream & operator<<(std::ostream & out, const TicTacToe3 & t)
-{
-	// TODO: insert return statement here
-}
-
-std::istream & operator>>(std::istream & in, TicTacToe3 & b)
-{
-	// TODO: insert return statement here
-}

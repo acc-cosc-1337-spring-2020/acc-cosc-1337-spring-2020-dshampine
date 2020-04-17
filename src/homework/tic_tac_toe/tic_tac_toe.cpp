@@ -25,18 +25,18 @@ void TicTacToe::start_game(string first_player)
 	if (first_player == "X" || first_player == "O")
 	{
 		player = first_player;
-		clear_board();
+		
 	}
 	else
 	{
 		throw Error("Player must be an X or an O");
 	}
-	
+	clear_board();
 }
 
 void TicTacToe::mark_board(int position)
 {
-	if (position < 1 || position > 9)
+	if (position < 1 || position > pegs.size())
 	{
 		throw Error("Position must be in range 1 to 9");
 	}
@@ -56,11 +56,22 @@ void TicTacToe::mark_board(int position)
 }
 std::ostream& operator<<(std::ostream& out, const TicTacToe& b)
 {
-	for (int i = 0; i < 9; i += 3)
+	if (b.pegs.size() == 9)
+	{
+		for (int i = 0; i < 9; i += 3)
+				{
+					out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "\n";
+				}
+			return out;
+	}
+	else if (b.pegs.size() == 16)
+	{
+		for (int i = 0; i < 16; i += 4)
 		{
-			out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "\n";
+			out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "|" << b.pegs[i + 3] << "\n";
 		}
-	return out;
+	}
+	
 }
 //void TicTacToe::display_board() const
 //{

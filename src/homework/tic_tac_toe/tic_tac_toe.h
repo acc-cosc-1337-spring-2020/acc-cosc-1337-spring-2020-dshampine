@@ -10,17 +10,20 @@ using std::string;
 class TicTacToe
 {
 public:
+	TicTacToe() = default;
 	TicTacToe(int s) : pegs ( s*s, " " ) {}
 	bool game_over();
 	void start_game(string first_player);
 	void mark_board(int position);
-	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& t);
-	friend std::istream& operator>>(std::istream& in, TicTacToe& b);
 	string get_player() const { return player; }
 	string get_winner() const { return winner; }
 	//void display_board() const;
+	
+	friend std::ostream& operator<<(std::ostream& out, const TicTacToe& b);
+	friend std::istream& operator>>(std::istream& in, TicTacToe& b);
+
 protected:
-	std::vector<string> pegs { 9, " " };
+	std::vector<string> pegs {};
 	virtual bool check_column_win();
 	virtual bool check_row_win();
 	virtual bool check_diagonal_win();
