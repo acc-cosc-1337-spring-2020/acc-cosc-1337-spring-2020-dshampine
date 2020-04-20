@@ -49,10 +49,7 @@ void TicTacToe::mark_board(int position)
 	pegs[position - 1] = player;
 	//check_column_win();
 	//set_next_player();
-	if (game_over() == false)
-	{
-		set_next_player();
-	}
+	set_next_player();
 }
 std::ostream& operator<<(std::ostream& out, const TicTacToe& b)
 {
@@ -183,9 +180,9 @@ void TicTacToe::set_winner()
 {
 	if (player == "X")
 	{
-		winner = "X";
+		winner = "O";
 	} 
-	else winner = "O";
+	else winner = "X";
 }
 /*
 void TicTacToe::start_game(std::string first_player)

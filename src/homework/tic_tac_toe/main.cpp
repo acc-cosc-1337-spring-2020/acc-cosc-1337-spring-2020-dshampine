@@ -10,6 +10,7 @@ using std::cout; using std::cin;
 int main()
 {
 	std::string choice;
+	TicTacToeManager manager;
 	do
 	{
 		int player;
@@ -18,7 +19,7 @@ int main()
 		int x;
 		int o;
 		int t;
-		TicTacToeManager manager;
+		
 		std::vector<std::reference_wrapper<TicTacToe>> games;
 		cout << "Enter 3 to play a 3x3 TicTacToe game or 4 to play a 4x4 game: ";
 		cin >> player;
@@ -91,6 +92,7 @@ int main()
 		cin >> choice;
 	} while (choice == "Y" || choice == "y");
 
+	cout << manager;
 
 	return 0;
 }
