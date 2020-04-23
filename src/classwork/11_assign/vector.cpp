@@ -1,4 +1,5 @@
 #include "vector.h"
+#include <iostream>
 /*
 initialize nums to size dynamic array.
 initialize each array element to 0.
@@ -25,4 +26,23 @@ Vector::Vector(const Vector & v)
 		nums[i] = v[i];
 	}
 
+}
+
+/*
+Release dynammic memory
+Deallocate memory
+*/
+Vector::~Vector()
+{
+	std::cout << "\nrealease memory\n";
+	delete[] nums;
+}
+
+//==================
+//free function
+void use_vector()
+{
+	Vector* v1 = new Vector(3);
+	delete v1;
+	v1 = nullptr;
 }

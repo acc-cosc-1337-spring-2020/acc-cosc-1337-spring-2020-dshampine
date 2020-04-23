@@ -14,10 +14,16 @@ public:
 	//void set_size(size_t sz) { size = sz; }
 	int& operator[](int i) { return nums[i]; } //allows modification of array
 	int& operator[](int i)const { return nums[i]; }
+	~Vector();//destructor
 private:
 	size_t size;
 	int* nums; 
 };
 
 #endif // !MY_VECTOR_H
+
+//does not belong to the class
+//free function
+
+void use_vector();
 
