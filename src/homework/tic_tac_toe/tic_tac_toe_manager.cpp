@@ -50,7 +50,7 @@ std::ostream& operator << (std::ostream& out, const TicTacToeManager& manager)
 	
 	for (auto &game : manager.games)
 	{
-		out << game;
+		out << *game;
 
 	}
 

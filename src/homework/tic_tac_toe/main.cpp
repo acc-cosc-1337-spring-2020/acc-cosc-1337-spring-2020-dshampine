@@ -55,7 +55,7 @@ int main()
 		cin >> choice;
 	} while (choice == "Y" || choice == "y");
 
-	cout << manager;
+	cout << *manager;
 
 	return 0;
 }
