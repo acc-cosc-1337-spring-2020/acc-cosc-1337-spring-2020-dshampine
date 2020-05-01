@@ -5,7 +5,7 @@ initialize nums to size dynamic array.
 initialize each array element to 0.
 */
 Vector::Vector(size_t sz)
-	:size{ sz }, nums{new int[sz]}
+	:size{ sz }, nums{ new int[sz], space{sz} }
 {
 	for (size_t i = 0; i < sz; ++i)
 	{
@@ -82,6 +82,59 @@ Vector & Vector::operator=(Vector && v)
 	v.size = 0;
 
 	return *this;
+}
+/*
+make sure allocation is greater than space
+create temp dynanic array of size new allocation
+copy values from old memory array to temp array
+delete the old memory array (nums)
+set nums to temp memory array
+set space = new allocation
+*/
+void Vector::Reserve(size_t new_allocation)
+{
+	if (new_allocation <= space)
+	{
+		return;
+	}
+	int* temp = new int[new_allocation];
+
+	for (size_t i = 0; i < size; ++i)
+	{
+		temp[i] = nums[i];
+	}
+	delete[] nums;
+	nums = temp;
+	space = new_allocation;
+}
+
+/*
+Reserve space
+Initialize value beyone size to 0
+
+*/
+void Vector::Resize(size_t new_size)
+{
+	Reserve(new_size);
+	for (size_t i = size; i < new_size; ++i)
+	{
+		nums[i] = 0;
+	}
+	size = new_size;
+}
+
+void Vector::Push_Back(int value)
+{
+	if (space == 0)
+	{
+		Reserve(RESERVE_DEFAULT_SIZE);
+	}
+	else if (size == space)
+	{
+		Reserve(space * RESERVE_DEFAULT_MULTIPLIER);
+	}
+	nums[size] = value;
+	++size;
 }
 
 /*

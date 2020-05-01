@@ -34,5 +34,39 @@ TEST_CASE("Test class case copy dynamic heap with 2 variable")
 	v2 = v1;
 	v1[1] = 5;
 
-	REQUIRE(v1[1] == v2[2]);
+	REQUIRE(v1[1] != v2[2]);
+}
+
+TEST_CASE("Test vector capacity and reserve")
+{
+	Vector v(3);
+	REQUIRE(v.Capacity() == 3);
+	REQUIRE(v.Size() == 3);
+
+	v.Reserve(6);
+	REQUIRE(v.Capacity() == 6);
+	REQUIRE(v.Size() == 3);
+}
+
+TEST_CASE("Test vector resize")
+{
+	Vector v(3);
+	v[0] = 3;
+	v[1] = 4;
+	v[2] = 5;
+	v.Resize(6);
+	REQUIRE(v[0] == 3);
+	REQUIRE(v[1] == 4);
+	REQUIRE(v[2] == 5);
+	REQUIRE(v[3] == 0);
+	REQUIRE(v[4] == 0);
+	REQUIRE(v[5] == 0);
+}
+
+TEST_CASE("Test vector pushback")
+{
+	Vector v(3);
+	v.Push_Back(5);
+
+	REQUIRE(v[3] == 5);
 }
