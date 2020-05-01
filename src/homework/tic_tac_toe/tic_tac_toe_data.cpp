@@ -9,12 +9,18 @@ std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
 	return std::vector<std::unique_ptr<TicTacToe>>();
 }
 
-void TicTacToeData::save_games(const std::vector<std::unique_ptr<TicTacToe>>& pegs)
+void TicTacToeData::save_games(const std::vector<TicTacToe>& games)
 {
 	std::ofstream file_out(file_name, std::ios_base::trunc);
-	for (auto peg : pegs)
+	for (auto pegs : games)
 	{
-		
+		for (auto ch : games)
+		{
+			file_out << " ";
+		}
+
+		file_out << get_winner();
+		file_out << "\n";
 	}
 
 	file_out.close();

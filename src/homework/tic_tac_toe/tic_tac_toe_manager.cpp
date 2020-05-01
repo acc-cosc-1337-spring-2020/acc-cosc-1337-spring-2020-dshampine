@@ -4,6 +4,10 @@
 //cpp
 #include <iostream>
 
+TicTacToeManager::TicTacToeManager(TicTacToeData)
+{
+}
+
 void TicTacToeManager::save_game(std::unique_ptr<TicTacToe>& b)
 {
 	update_winner_count(b->get_winner());
@@ -29,6 +33,10 @@ unique_ptr<TicTacToe> TicTacToeManager::get_game(int player)
 		return std::unique_ptr<TicTacToe4>();
 	}
 		
+}
+
+TicTacToeManager::~TicTacToeManager()
+{
 }
 
 void TicTacToeManager::update_winner_count(string winner)
