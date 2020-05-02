@@ -1,6 +1,4 @@
 #include "tic_tac_toe.h"
-#include "string"
-#include <iostream>
 //cpp
 
 
@@ -47,43 +45,34 @@ void TicTacToe::mark_board(int position)
 	}
 
 	pegs[position - 1] = player;
-	//check_column_win();
-	//set_next_player();
 	set_next_player();
 }
-std::ostream& operator<<(std::ostream& out, const TicTacToe& b)
+std::ostream& operator<<(std::ostream& out, const TicTacToe& t)
 {
-	if (b.pegs.size() == 9)
+	if (t.pegs.size() == 9)
 	{
 		for (int i = 0; i < 9; i += 3)
 				{
-					out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "\n";
+					out << t.pegs[i] << "|" << t.pegs[i + 1] << "|" << t.pegs[i + 2] << "\n";
 				}
 			return out;
 	}
-	else if (b.pegs.size() == 16)
+	else if (t.pegs.size() == 16)
 	{
 		for (int i = 0; i < 16; i += 4)
 		{
-			out << b.pegs[i] << "|" << b.pegs[i + 1] << "|" << b.pegs[i + 2] << "|" << b.pegs[i + 3] << "\n";
+			out << t.pegs[i] << "|" << t.pegs[i + 1] << "|" << t.pegs[i + 2] << "|" << t.pegs[i + 3] << "\n";
 		}
 	}
 	
 }
-//void TicTacToe::display_board() const
-//{
-//	for (int i = 0; i < 9; i += 3)
-//	{
-//		std::cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
-//	}
-//}
 
-std::istream& operator>>(std::istream& in, TicTacToe& b)
+std::istream& operator>>(std::istream& in, TicTacToe& t)
 {
 	int pos{ 0 };
-	std::cout << "Player " << b.get_player() << " enter a position: ";
+	std::cout << "Player " << t.get_player() << " enter a position: ";
 	in >> pos;
-	b.mark_board(pos);
+	t.mark_board(pos);
 
 	return in;
 }
