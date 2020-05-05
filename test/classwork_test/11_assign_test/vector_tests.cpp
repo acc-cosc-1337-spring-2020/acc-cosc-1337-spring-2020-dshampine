@@ -70,3 +70,12 @@ TEST_CASE("Test vector pushback")
 
 	REQUIRE(v[3] == 5);
 }
+
+TEST_CASE("Test vector with pushback")
+{
+	Vector v;
+	REQUIRE(v.Capacity() == 0);
+	v.Push_Back(5);
+	REQUIRE(v.Capacity() == 8);
+	REQUIRE(v.Size() == 1);
+}

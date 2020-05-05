@@ -1,5 +1,12 @@
 #include "vector.h"
 #include<iostream>
+
+Vector::Vector()
+	: size {0}, nums{nullptr}, space{0}
+{
+
+}
+
 /*
 Initialize nums to size dynamic array.
 Initialize each array element to 0.
