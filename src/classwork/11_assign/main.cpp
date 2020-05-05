@@ -3,10 +3,8 @@
 
 int main() 
 {
-	Vector v;
-
-	Vector v1(3);
-	Vector v1 = get_vector();
+	Vector<int> v1(3);
+	v1 = get_vector();
 	
 	return 0;
 }
