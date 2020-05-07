@@ -6,7 +6,7 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("test class copy with stack variable")
+TEST_CASE("Test class copy with stack variables")
 {
 	Vector<int> v1(3);
 	Vector<int> v2 = v1;
@@ -14,7 +14,7 @@ TEST_CASE("test class copy with stack variable")
 	REQUIRE(v1.Size() == v2.Size());
 }
 
-TEST_CASE("test class copy with dynamic memory(heap) variables")
+TEST_CASE("Test class copy with dynamic(heap) variables")
 {
 	Vector<int> v1(3);
 	Vector<int> v2 = v1;
@@ -27,10 +27,10 @@ TEST_CASE("test class copy with dynamic memory(heap) variables")
 	REQUIRE(v2[1] == 0);
 }
 
-TEST_CASE("Test class case copy dynamic heap with 2 variable")
+TEST_CASE("Test class copy dynamic heap w 2 variables")
 {
-	Vector<double> v1(2);
-	Vector <double> v2(3);
+	Vector<double> v1(3);
+	Vector<double> v2(3);
 	v2 = v1;
 	v1[1] = 5;
 
@@ -54,6 +54,7 @@ TEST_CASE("Test vector resize")
 	v[0] = 3;
 	v[1] = 4;
 	v[2] = 5;
+
 	v.Resize(6);
 	REQUIRE(v[0] == 3);
 	REQUIRE(v[1] == 4);
@@ -63,7 +64,7 @@ TEST_CASE("Test vector resize")
 	REQUIRE(v[5] == 0);
 }
 
-TEST_CASE("Test vector pushback")
+TEST_CASE("Test vector push back")
 {
 	Vector<int> v(3);
 	v.Push_Back(5);
@@ -71,11 +72,12 @@ TEST_CASE("Test vector pushback")
 	REQUIRE(v[3] == 5);
 }
 
-TEST_CASE("Test vector with pushback")
+TEST_CASE("Test default constructor w push back")
 {
 	Vector<double> v;
 	REQUIRE(v.Capacity() == 0);
 	v.Push_Back(5);
 	REQUIRE(v.Capacity() == 8);
 	REQUIRE(v.Size() == 1);
+
 }

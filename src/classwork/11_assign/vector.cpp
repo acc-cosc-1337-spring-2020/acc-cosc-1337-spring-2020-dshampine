@@ -3,9 +3,8 @@
 
 template<typename T>
 Vector<T>::Vector()
-	: size {0}, nums{nullptr}, space{0}
+	: size{ 0 }, nums{ nullptr }, space{ 0 }
 {
-
 }
 
 /*
@@ -59,9 +58,11 @@ Vector<T> & Vector<T>::operator=(const Vector<T> & v)
 		{
 			nums[i] = v[i];
 		}
+
 		return *this;
 	}
-	int* temp = new T[v.size];
+
+	T* temp = new T[v.size];
 
 	for (size_t i = 0; i < v.size; ++i)
 	{
@@ -124,7 +125,7 @@ void Vector<T>::Reserve(size_t new_allocation)
 		return;
 	}
 
-	int* temp = new T[new_allocation];
+	T* temp = new T[new_allocation];
 
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -154,6 +155,7 @@ void Vector<T>::Resize(size_t new_size)
 
 	size = new_size;
 }
+
 template<typename T>
 void Vector<T>::Push_Back(T value)
 {
@@ -162,8 +164,8 @@ void Vector<T>::Push_Back(T value)
 		Reserve(RESERVE_DEFAULT_SIZE);
 	}
 	else if (size == space)
-	{//should this be resize or reserve? 
-		Reserve(space * RESERVE_DEFAULT_MULTIPLIER);
+	{
+		Resize(space * RESERVE_DEFAULT_MULTIPLIER);
 	}
 
 	nums[size] = value;
@@ -172,6 +174,7 @@ void Vector<T>::Push_Back(T value)
 
 template class Vector<int>;
 template class Vector<double>;
+
 /*
 Release dynamic memory
 Deallocate memory

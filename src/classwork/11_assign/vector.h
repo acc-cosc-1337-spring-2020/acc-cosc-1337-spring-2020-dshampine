@@ -1,5 +1,3 @@
-//
-
 #ifndef MY_VECTOR_H
 #define MY_VECTOR_H
 #include<cstddef>
@@ -16,7 +14,7 @@ public:
 	Vector(const Vector<T>& v);//copy constructor - Rule of 3 c++98
 	Vector<T>& operator=(const Vector<T>& v);//copy assignment- Rule of 3 c++98
 	Vector(Vector<T>&& v);//move constructor Rule of 5 - c++11
-	Vector<T>&operator=(Vector<T>&& v);//move assignment Rule of 5 - c++11
+	Vector<T> &operator=(Vector<T>&& v);//move assignment Rule of 5 - c++11
 	size_t Size()const { return size; }
 	T& operator[](int i) { return nums[i]; }
 	T& operator[](int i)const { return nums[i]; }
@@ -39,4 +37,4 @@ private:
 //free function
 void use_vector();
 
-Vector get_vector();
+Vector<int> get_vector();
